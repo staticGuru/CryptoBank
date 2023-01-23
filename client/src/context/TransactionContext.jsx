@@ -44,11 +44,11 @@ export const TransactionsProvider = ({ children }) => {
 
         const availableTransactions =
           await transactionsContract.getAllTransactions();
-
+        console.log("availableTransactions", availableTransactions);
         const structuredTransactions = availableTransactions.map(
           (transaction) => ({
             addressTo: transaction.receiver,
-            addressFrom: transaction.sender,
+            addressFrom: transaction.senders,
             timestamp: new Date(
               transaction.timestamp.toNumber() * 1000
             ).toLocaleString(),
